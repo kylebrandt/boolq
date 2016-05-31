@@ -9,7 +9,7 @@ import (
 )
 
 // An Asker is something that can be queried using boolq. The string passed
-// to Ask will be the component in an expression. For example with the expression 
+// to Ask will be the component in an expression. For example with the expression
 // `(foo:bar AND baz:biz)` Ask will be called twice, once with the argument "foo:bar"
 // and another time with the argument "baz:biz"
 type Asker interface {
