@@ -8,10 +8,14 @@ import (
 	"github.com/kylebrandt/boolq/parse"
 )
 
+
 type Asker interface {
 	Ask(string) (bool, error)
 }
 
+// AskExpr takes an expression and an Asker. It then parses the expression
+// calling the Asker's Ask on expressions AskNodes and returns if the
+// expression is true or not for the given asker.
 func AskExpr(expr string, asker Asker) (bool, error) {
 	q, err := parse.Parse(expr)
 	if err != nil {
