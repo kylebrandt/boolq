@@ -1,5 +1,5 @@
 # boolq
-build simple bool expressions
+build simple bool expressions. Supports `AND`, `OR`, and `()` grouping. Individual items start with a letter and continue until whitespace. How you treat those items is up to you and is based on the Ask method.
 
 # Example:
 
