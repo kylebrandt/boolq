@@ -27,6 +27,13 @@ func AskExpr(expr string, asker Asker) (bool, error) {
 	return walk(q.Root, asker)
 }
 
+// AskParsedExpr is like AskExpr but takes an expression that has already
+// been parsed by parse.Parse on the expression. This is useful if you are calling
+// the same expression multiple times.
+func AskParsedExpr(q parse.Tree, asker Asker) (bool, error) {
+	return walk(q.Root, asker)
+}
+
 func walk(node parse.Node, asker Asker) (bool, error) {
 	switch node := node.(type) {
 	case *parse.AskNode:
@@ -36,9 +43,8 @@ func walk(node parse.Node, asker Asker) (bool, error) {
 	case *parse.UnaryNode:
 		return walkUnary(node, asker)
 	default:
-		panic(fmt.Errorf("can't walk this type", node))
+		return false, fmt.Errorf("can't walk this type", node)
 	}
-	return true, nil
 }
 
 func walkBinary(node *parse.BinaryNode, asker Asker) (bool, error) {
