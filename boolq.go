@@ -43,7 +43,7 @@ func walk(node parse.Node, asker Asker) (bool, error) {
 	case *parse.UnaryNode:
 		return walkUnary(node, asker)
 	default:
-		return false, fmt.Errorf("can't walk this type", node)
+		return false, fmt.Errorf("can not walk type %v", node.Type())
 	}
 }
 
